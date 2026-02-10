@@ -10,11 +10,27 @@
      - cachyos-v3-mirrorlist
      - cachyos-v4-mirrorlist
      - cachyos-rate-mirrors
+     - chwd
+- name: "CachyOS kernels (hidden)"
+  description: "CachyOS kernels to install"
+  hidden: true
+  selected: true
+  critical: true
+  platform: "desktop"
+  packages:
      - linux-cachyos
      - linux-cachyos-headers
      - linux-cachyos-lts
      - linux-cachyos-lts-headers
-     - chwd
+- name: "CachyOS kernels (hidden/handheld)"
+  description: "CachyOS kernels to install (Handheld)"
+  hidden: true
+  selected: true
+  critical: true
+  platform: "handheld"
+  packages:
+     - linux-cachyos-deckify
+     - linux-cachyos-deckify-headers
 - name: "CachyOS Packages"
   description: "needed CachyOS packages"
   hidden: false
@@ -228,8 +244,19 @@
     - plasma-login-manager
     - spectacle
     - xsettingsd
+- name: "CachyOS Handhelds"
+  description: "Basic packages for handhelds"
+  platform: "handheld"
+  hidden: false
+  selected: true
+  critical: true
+  packages:
+    - cachyos-handheld
+    - plasma-keyboard
+    - v4l-utils
 - name: "GNOME-Desktop"
   description: "GNOME desktop environment - designed to put you in control and get things done."
+  platform: "desktop"
   hidden: false
   selected: false
   critical: true
@@ -269,6 +296,7 @@
           - gvfs-mtp
 - name: "Cosmic"
   description: "Linux desktop, which provides an environment that features advanced functionality and a responsive design."
+  platform: "desktop"
   hidden: false
   selected: false
   critical: true
@@ -300,6 +328,7 @@
     - xorg-xwayland
 - name: "Niri"
   description: "A scrollable-tiling Wayland compositor."
+  platform: "desktop"
   hidden: false
   selected: false
   expanded: false
@@ -309,6 +338,7 @@
     - sddm
 - name: "Cinnamon"
   description: "Linux desktop which provides advanced innovative features and a traditional user experience."
+  platform: "desktop"
   hidden: false
   selected: false
   critical: true
@@ -323,6 +353,7 @@
     - lightdm-gtk-greeter
 - name: "Budgie-Desktop"
   description: "Budgie - an independent, familiar, and modern desktop."
+  platform: "desktop"
   hidden: false
   selected: false
   critical: true
@@ -354,6 +385,7 @@
     - xdg-user-dirs-gtk
 - name: "MATE-Desktop"
   description: "MATE Desktop - the continuation of GNOME 2"
+  platform: "desktop"
   hidden: false
   selected: false
   critical: true
@@ -373,6 +405,7 @@
     - xdg-user-dirs-gtk
 - name: "Xfce4"
   description: "Xfce is a lightweight desktop environment for UNIX-like operating systems. It aims to be fast and low on system resources, while still being visually appealing and user friendly."
+  platform: "desktop"
   hidden: false
   selected: false
   critical: true
@@ -412,6 +445,7 @@
     - xfce4-xkb-plugin
 - name: "LXQT-Desktop"
   description: "The Lightweight Qt Desktop Environment."
+  platform: "desktop"
   hidden: false
   selected: false
   critical: true
@@ -440,6 +474,7 @@
     - xsettingsd
 - name: "LXDE-Desktop"
   description: "The Lightweight Desktop Environment."
+  platform: "desktop"
   hidden: false
   selected: false
   critical: true
@@ -471,6 +506,7 @@
     - xed
 - name: "UKUI"
   description: "It is a lightweight desktop environment, which consumes few resources and works with older computers. It has been developed with GTK and Qt technologies. Its visual appearance is similar to Windows 7, making it easier for new users of Linux."
+  platform: "desktop"
   hidden: false
   selected: false
   critical: true
@@ -509,6 +545,7 @@
     - qt5-quickcontrols
 - name: "Hyprland"
   description: "Hyprland is a highly customizable dynamic tiling Wayland compositor that doesn't sacrifice on its looks."
+  platform: "desktop"
   hidden: false
   selected: false
   expanded: false
@@ -527,6 +564,7 @@
     - xorg-xwayland
 - name: "Sway"
   description: "Sway is a tiling Wayland compositor and a drop-in replacement for the i3 window manager for X11. It works with your existing i3 configuration and supports most of i3's features, plus a few extras."
+  platform: "desktop"
   hidden: false
   selected: false
   critical: true
@@ -545,6 +583,7 @@
     - xdg-desktop-portal-wlr
 - name: "Wayfire"
   description: "Wayfire is a wayland compositor based on wlroots. It aims to create a customizable, extendable and lightweight environment without sacrificing its appearance."
+  platform: "desktop"
   hidden: false
   selected: false
   expanded: false
@@ -560,6 +599,7 @@
     - xorg-xwayland
 - name: "i3-Window-Manager"
   description: "i3 tiling window manager, primarily targeted at developers and advanced users."
+  platform: "desktop"
   hidden: false
   selected: false
   expanded: false
@@ -580,6 +620,7 @@
     - xorg-xrandr
 - name: "Qtile"
   description: "Qtile is a X11 window manager that is configured with the Python programming language."
+  platform: "desktop"
   hidden: false
   selected: false
   critical: true
@@ -605,6 +646,7 @@
     - ly
 - name: "bspwm"
   description: "bspwm is a tiling window manager that represents windows as the leaves of a full binary tree. bspwm supports multiple monitors and is configured and controlled through messages."
+  platform: "desktop"
   hidden: false
   selected: false
   critical: true
@@ -621,6 +663,7 @@
     - xorg-xrandr
 - name: "Openbox"
   description: "Openbox is a highly configurable, floating window manager with extensive standards support."
+  platform: "desktop"
   hidden: false
   selected: false
   critical: true
@@ -677,6 +720,7 @@
     - firefox-i18n-$LOCALE
 - name: "Printing-Support"
   description: "Support for printing (Cups)"
+  platform: "desktop"
   hidden: false
   selected: false
   critical: true
@@ -697,6 +741,7 @@
     - system-config-printer
 - name: "Support for HP Printer/Scanner"
   description: "Extra Packages for HP Printer/Scanner"
+  platform: "desktop"
   hidden: false
   selected: false
   critical: true
