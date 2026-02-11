@@ -26,6 +26,7 @@
 #include "packages/Globals.h"
 #include "utils/Logger.h"
 #include "utils/Variant.h"
+#include "utils/System.h"
 
 /** @brief This removes any values from @p groups that match @p source
  *
@@ -289,6 +290,21 @@ fillModel( PackageListModel* model, const QVariantList& items )
         {
             cWarning() << "PackageChooser entry" << item_index << "is only for EFI systems.";
             continue;
+        }
+
+        if ( !item_map.value("platform").toString().isEmpty() )
+        {
+            if ( Calamares::System::instance()->isHandheld() && item_map.value("platform").toString() != "handheld" )
+            {
+                cWarning() << "PackageChooser entry" << item_index << "is only for desktop systems.";
+                continue;
+            }
+
+            if ( !Calamares::System::instance()->isHandheld() && item_map.value("platform").toString() != "desktop" )
+            {
+                cWarning() << "PackageChooser entry" << item_index << "is only for handheld systems.";
+                continue;
+            }
         }
 
         if ( item_map.contains( "appdata" ) )
