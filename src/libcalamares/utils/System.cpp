@@ -47,6 +47,14 @@ System::System( bool doChroot, QObject* parent )
     {
         Calamares::JobQueue::instance()->globalStorage()->insert( "rootMountPoint", "/" );
     }
+
+    QFile tag("/etc/edition-tag");
+
+    if (tag.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        std::string edition = tag.readLine().trimmed().toStdString();
+        m_isHandheld = (edition == "handheld");
+    }
 }
 
 System::~System() {}
@@ -285,6 +293,12 @@ bool
 System::doChroot() const
 {
     return m_doChroot;
+}
+
+bool
+System::isHandheld() const
+{
+    return m_isHandheld;
 }
 
 Calamares::JobResult

@@ -354,10 +354,14 @@ public:
 
     DLLEXPORT bool doChroot() const;
 
+    DLLEXPORT bool isHandheld() const;
+
 private:
     static System* s_instance;
 
     bool m_doChroot;
+
+    bool m_isHandheld;
 };
 
 }  // namespace Calamares

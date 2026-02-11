@@ -149,6 +149,8 @@ populate_utils( py::module_& m )
            "Displays warning to user",
            py::arg( "title" ),
            py::arg( "description" ));
+
+    m.def( "is_handheld", &Calamares::Python::is_handheld, "Checks if system is handheld" );
 }
 
 void

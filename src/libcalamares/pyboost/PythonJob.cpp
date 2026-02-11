@@ -199,6 +199,11 @@ BOOST_PYTHON_MODULE( libcalamares )
              &Calamares::Python::show_warning,
              bp::args( "title", "description" ),
              "Displays warning to user" );
+
+    // .. Boolean functions
+    bp::def( "is_handheld",
+             &Calamares::Python::is_handheld,
+             "Check if system is handheld" );
 }
 
 
