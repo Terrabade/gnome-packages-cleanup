@@ -22,6 +22,7 @@
 #include "utils/Permissions.h"
 #include "utils/String.h"
 #include "utils/StringExpander.h"
+#include "utils/System.h"
 #include "utils/Variant.h"
 
 #include <QCoreApplication>
@@ -1050,8 +1051,22 @@ Config::setConfigurationMap( const QVariantMap& configurationMap )
     updateGSAutoLogin( doAutoLogin(), loginName() );
     checkReady();
 
-    ApplyPresets( *this, configurationMap ) << "fullName"
-                                            << "loginName";
+    bool ok = false;
+    auto platformOverrides = Calamares::getSubMap( configurationMap, "platform", ok );
+
+    if (Calamares::System::instance()->isHandheld())
+    {
+        auto handheld = Calamares::getSubMap( platformOverrides, "handheld", ok );
+        ApplyPresets( *this, handheld ) << "fullName"
+                                        << "loginName";
+    }
+    else
+    {
+        auto desktop = Calamares::getSubMap( platformOverrides, "desktop", ok );
+        ApplyPresets( *this, desktop ) << "fullName"
+                                       << "loginName";
+    }
+
 }
 
 void
